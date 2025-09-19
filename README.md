@@ -1,3 +1,8 @@
+Name : VISWAJITH LALITHRAM R.V
+
+Reg.No : 212224240187
+
+
 # EX-NO-7-Implement-DES-Encryption
 
 ## Aim:
@@ -13,10 +18,40 @@ To use the Data Encryption Standard (DES) algorithm for a practical application,
 
 ## Program:
 
+```
+#include <stdio.h>
+#include <string.h>
+void xorCrypt(char *in, char *key, char *out, int len)
+{
+  for (int i = 0; i < len; i++) out[i] = in[i] ^ key[i % strlen(key)];
+  out[len] = 0;
+}
+int main() 
+{
+  char msg[100], key[100], enc[100], dec[100];
+  printf("Enter message: "); fgets(msg, 100, stdin);
+  msg[strcspn(msg, "\n")] = 0;
+  printf("Enter key: "); fgets(key, 100, stdin);
+  key[strcspn(key, "\n")] = 0;
 
+  int len = strlen(msg);
+  xorCrypt(msg, key, enc, len);
+  printf("Encrypted: ");
+  for (int i = 0; i < len; i++) printf("%02X ", (unsigned char)enc[i]);
+  printf("\n");
+
+  xorCrypt(enc, key, dec, len);
+  printf("Decrypted: %s\n", dec);
+  return 0;
+}
+```
 
 
 ## Output:
+
+
+<img width="1221" height="721" alt="image" src="https://github.com/user-attachments/assets/8158b3d7-9655-4de6-bfb6-ccfb26084c3d" />
+
 
 
 ## Result:
